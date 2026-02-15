@@ -1,3 +1,37 @@
-.test {
-  color: blue;
+:root{
+  --bg:#f7f8fb;
+  --card:#fff;
+  --accent:#2563eb;
+  --danger:#ef4444;
+  --muted:#6b7280;
 }
+
+*{box-sizing:border-box;font-family:Inter, system-ui, Arial, sans-serif}
+body,html,#root{height:100%;margin:0}
+
+.app{min-height:100vh;background:var(--bg);padding:20px}
+.app-header{max-width:1000px;margin:0 auto;padding:10px 0}
+.app-header h1{margin:0;color:var(--accent)}
+
+.app-main{max-width:1000px;margin:16px auto;display:grid;grid-template-columns:360px 1fr;gap:20px}
+.form-section, .list-section{background:var(--card);padding:16px;border-radius:8px;box-shadow:0 1px 4px rgba(2,6,23,0.06)}
+
+.student-form label{display:block;margin-bottom:10px;color:var(--muted);font-size:13px}
+.student-form input{width:100%;padding:8px;border:1px solid #e6e7ee;border-radius:6px;margin-top:6px}
+.form-actions{display:flex;gap:8px;margin-top:12px}
+
+.btn{padding:8px 12px;border-radius:6px;border:1px solid #d1d5db;background:#fff;cursor:pointer}
+.btn.primary{background:var(--accent);color:#fff;border-color:transparent}
+.btn.danger{background:var(--danger);color:#fff;border-color:transparent}
+.btn.small{padding:6px 8px;font-size:13px}
+
+.student-table{width:100%;border-collapse:collapse}
+.student-table th,.student-table td{padding:8px 10px;text-align:left;border-bottom:1px solid #f1f3f5}
+.student-table th{font-size:13px;color:var(--muted)}
+
+.student-table tbody tr:hover{background:#fbfdff}
+
+@media (max-width:900px){
+  .app-main{grid-template-columns:1fr}
+}
+

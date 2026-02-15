@@ -19,22 +19,23 @@ const studentSchema = new mongoose.Schema({
 
 
 // auto roll generator
-studentSchema.pre("save", async function(next){
-  if(!this.isNew) return next();
+studentSchema.pre("save", async function () {
+  if (!this.isNew) return;
 
   const last = await mongoose.model("Student")
-  .findOne({})
-  .sort({rollNo:-1});
+    .findOne({})
+    .sort({ rollNo: -1 });
 
   let nextNo = 1;
-  if(last && last.rollNo){
-    const num = parseInt(last.rollNo.replace("psg",""));
+
+  if (last && last.rollNo) {
+    const num = parseInt(last.rollNo.replace("psg", ""));
     nextNo = num + 1;
   }
 
-  this.rollNo = "psg" + String(nextNo).padStart(3,"0");
-  next();
+  this.rollNo = "psg" + String(nextNo).padStart(3, "0");
 });
+
 
 const Student = mongoose.model("Student", studentSchema);
 
